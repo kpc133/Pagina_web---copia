@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bienvenido</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-re.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='media/favicon.png') }}">
+</head>
+<body>
+
+    <div class="logo">
+        <img src="{{ url_for('static', filename='media/logo.jpg') }}" alt="Logo de EvoRide">
+    </div>
+
+    <form method="POST" action="{{ url_for('logout') }}">
+        <button type="submit" class="close-sesion">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+    </form>
+
+    <div class="ctn-welcome">
+        <img src="" alt="" class="logo-welcome">
+        <p class="title-welcome">¡Bienvenido!</p>
+        <p>Has iniciado sesión exitosamente.</p>
+        <p>Antes de continuar debes ingresar tus datos personales</p>
+    </div>
+
+    <h1>Subir un Archivo PDF</h1>
+
+    <div class="upload-container">
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+            <div>
+                <label for="pdf_file">Selecciona un archivo PDF (Certificado de Discapacidad)</label>
+                <input type="file" name="pdf_file" id="pdf_file" accept=".pdf" required>
+            </div>
+            <button id="btn_pdf" type="submit">Subir Archivo</button>
+        </form>
+
+        {% if message %}
+        <div class="message {{ status }}">
+            {{ message }}
+        </div>
+        {% endif %}
+    </div>
+    
+
+    <div class="form-group">
+        <h2>Diligenciar los Siguientes Datos:</h2>
+        <div class="question">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre">
+        </div>
+        <div class="question">
+            <label for="email">Correo electronico:</label>
+            <input type="email" id="email" name="email">
+        </div>
+        <div class="question">
+            <label for="tipo_documento">Tipo de Documento:</label>
+            <select id="tipo_documento" name="tipo_documento">
+                <option value="cedula">Cédula de Ciudadanía</option>
+                <option value="pasaporte">Pasaporte</option>
+                <option value="tarjeta_identidad">Tarjeta de Identidad</option>
+                <option value="cedula_extranjeria">Cédula de Extranjería</option>
+                </select>
+        </div>
+        <div class="question">
+            <label for="numero_cedula">Número de documento:</label>
+            <input type="text" id="numero_cedula" name="numero_cedula">
+        </div>
+        <div class="question">
+            <label for="fecha_expedicion">Fecha de expedición del documento:</label>
+            <input type="date" id="fecha_expedicion" name="fecha_expedicion">
+        </div>
+        <div class="question">
+            <label for="telefono">Número de teléfono:</label>
+            <input type="tel" id="telefono" name="telefono">
+        </div>
+        <div class="question">
+            <label for="lugar_residencia">Lugar de residencia:</label>
+            <input type="text" id="lugar_residencia" name="lugar_residencia">
+        </div>
+        <div class="question">
+            <label for="direccion">Dirección de residencia:</label>
+            <input type="text" id="direccion" name="direccion">
+        </div>
+        <div class="question">
+            <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+        </div>
+        <div class="question">
+            <label for="comentario">¿Algún comentario?</label>
+            <textarea id="comentario" name="comentario"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h3>Personalización de Vehiculo:</h3>
+        <div class="question">
+
+
+            <div class="question2">
+                <label for="tipo_vehiculo">Tipo de Vehiculo</label>
+                <select id="tipo_vehiculo" name="tipo_vehiculo">
+                    <option value="legacy">Legacy</option>
+                    <option value="pasaporte">Clasico</option>
+                    <option value="core">Core</option>
+                    <option value="evo">Evo</option>
+                    <option value="ride">Ride</option>
+                    <option value="soul">Soul</option>
+                    <option value="aura">Aura</option>
+                    <option value="north">North</option>
+                    <option value="future">Future</option>
+                    <option value="now">Now</option>
+                    </select>
+            </div>
+            <div class="question2">
+                <label for="Accesorios">Accesorios:</label>
+                <select id="Accesorios" name="Accesorios">
+                    <option value="Sslla_de_ruedas">Silla de ruedas</option>
+                    <option value="asientos_girataorios">Asientos giratorios e inclinables</option>
+                    <option value="cama_cubierta">Cama Cubierta</option>
+                    <option value="puertas_automáticas">Cilindro portatil</option>
+                    </select>
+            </div>
+            <div class="question2">
+                <label for="planes">Planes:</label>
+                <select id="planes" name="planes">
+                    <option value="plan_free">Plan Free</option>
+                    <option value="plan_gobierno">Plan Gobierno</option>
+                    <option value="plan_empresarial">Plan Empresarial</option>
+                    <option value="plan_estandar">Plan Estandar</option>
+                    </select>
+            </div>
+            <div class="question2">
+                <label for="tipo_documento">Tipo de Documento:</label>
+                <select id="tipo_documento" name="tipo_documento">
+                    <option value="cedula">Cédula de Ciudadanía</option>
+                    <option value="pasaporte">Pasaporte</option>
+                    <option value="tarjeta_identidad">Tarjeta de Identidad</option>
+                    <option value="cedula_extranjeria">Cédula de Extranjería</option>
+                    </select>
+            </div>
+            <div class="question2">
+                <label for="tipo_documento">Tipo de Documento:</label>
+                <select id="tipo_documento" name="tipo_documento">
+                    <option value="cedula">Cédula de Ciudadanía</option>
+                    <option value="pasaporte">Pasaporte</option>
+                    <option value="tarjeta_identidad">Tarjeta de Identidad</option>
+                    <option value="cedula_extranjeria">Cédula de Extranjería</option>
+                    </select>
+            </div>
+
+
+        <button type="submit" onclick="window.location.href='/index-re';" >
+            Enviar
+        </button>
+</form>
+</div>
+    
+<footer class="footer-derechos">
+    <p>&copy; 2025 EvoRide. Todos los derechos reservados.</p>
+</footer>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>

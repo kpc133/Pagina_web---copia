@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvoRide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='media/favicon.png') }}">
+</head>
+<body>
+         
+        
+    <header>
+        <div class="container_header">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='media/logo.jpg') }}" alt="Logo de EvoRide">
+            </div>
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Compañia</a></li>
+                        <li><a href="#">Contactos</a></li>
+                        <li><a href="#">Soluciones</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <i class="fa-solid fa-bars" id="icon_menu"></i>
+            <div class="header_register">
+                <input type="button" class="btn_header_register" value="Registrarse">
+            </div>
+            <div class="header_login">
+                <input type="button" class="btn_header_login" value="Iniciar Sesión">
+            </div>
+        </div>
+    </header>
+    
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal"></span>
+            <div class="caja_trasera">
+                <div class="caja_trasera_login">
+                    <h3>¿Ya tienes una cuenta?</h3>
+                    <p>Inicia sesión para continuar</p>
+                    <button id="btn_iniciar_sesion">Iniciar Sesión</button>
+                </div>
+                <div class="caja_trasera_register">
+                    <h3>¿No tienes una cuenta?</h3>
+                    <p>Regístrate para iniciar sesión</p>
+                    <button id="btn_registrarse">Registrarse</button>
+
+                    <div class="google-login-container">
+                        <button onclick="loginWithGoogle()" class="google-btn">
+                            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
+                            Iniciar sesión con Google
+                        </button>
+                    </div>
+
+                    <div id="welcome-message" style="display: none; text-align: center; margin-top: 15px; font-weight: bold;"></div>
+                </div>
+            </div>
+            <div class="contenedor_login_register">
+                <form id="formulario_login">
+                    <h2>Iniciar Sesión</h2>
+                    <input type="email" placeholder="Correo Electrónico" name="email" required>
+                    <input type="password" placeholder="Contraseña" name="contraseña" required>
+                    <button type="submit">Iniciar Sesión</button>
+                </form>
+                
+                <form id="formulario_register">
+                    <h2>Registrarse</h2>
+                    <input type="text" placeholder="Nombre Completo" name="nombre" required>
+                    <input type="email" placeholder="Correo Electrónico" name="email" required>
+                    <input type="password" placeholder="Contraseña" name="contraseña" required>
+                    <button type="submit">Registrarse</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <main>
+        <div class="cover">
+            <div class="text_information_cover">
+                <h1>Las limitaciones y la poca comodidad de transporte llegan a su fin, Gracias a EvoRide</h1>
+                <p>Descubre la revolución en transporte con EvoRide, donde la comodidad y la eficiencia se unen para ofrecerte una experiencia inigualable.</p>
+                <div class="buttons_cover">
+                    <input type="button" class="btn_register_cover" id="btn_register_2" value="Registrarse">
+                    <input type="button" class="btn_readMore_cover" value="Leer más">
+                </div>
+            </div>
+            <div class="media_cover">
+                <video src="{{ url_for('static', filename='media/No-copyright __ without logo __ hud futuristic animation with sound.mp4') }}" autoplay loop muted playsinline preload="auto"></video>
+            </div>
+        </div>
+    
+        <div class="container_banner">
+            <div class="banner">
+                <div class="banner_icon_msg">
+                    <img src="{{ url_for('static', filename='media/foto-mensajeria.png') }}" id="icon_msg" alt="">
+                </div>
+                <div class="banner_icon_fire">
+                    <img src="{{ url_for('static', filename='media/heart-sin fondo.png') }}" id="icon_fire" alt="">
+                </div>
+                <div class="banner_text">
+                    <h2>Experimenta la libertad de moverte sin límites con EvoRide</h2>
+                    <a href="#">Descubre más</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i> Twitter</a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+            <a href="https://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
+        </div>
+    </footer>
+
+    <footer class="footer-derechos">
+        <p>&copy; 2025 EvoRide. Todos los derechos reservados.</p>
+    </footer>
+    
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
+
