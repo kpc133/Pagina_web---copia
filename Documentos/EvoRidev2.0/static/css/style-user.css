@@ -1,0 +1,238 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #1a1a1a;
+    font-family: sans-serif;
+    background: linear-gradient(to bottom right, #1f2937, #000);
+    color: white;
+    font-family: sans-serif;
+    min-height: 100vh;
+    
+}
+
+.alto-contraste{
+    background-color: black;
+    color: yellow; /*cualquier combinación de alto contraste que prefiera */
+    
+}
+
+.alto-contraste .menu-toggle {
+    background-color: #555;
+    color: yellow;
+    border-color: yellow; 
+   
+}
+
+.alto-contraste .menu-items {
+    background-color: #555;
+    color: yellow;
+    border-color: yellow; 
+}
+
+
+.alto-contraste .close-sesion {
+    background-color: #555;
+    color: yellow;
+    border-color: yellow; 
+}
+
+h1 {
+    font-size: 2em;
+    animation: animacionTexto 1.5s ease-in-out;
+    font-weight: bold;
+    background: linear-gradient(90deg, red, blue, green, yellow);
+    background-size: 400% 400%;
+    background-clip: text;
+    color: transparent;
+    animation: moverColores 4s infinite alternate ease-in-out;
+}
+
+@keyframes animacionTexto {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes moverColores {
+        0% { background-position: 0%; }
+        100% { background-position: 100%; }
+    }
+    
+
+.dashboard {
+    display: flex;
+    justify-content: flex-start; /* Contenido empieza desde la izquierda */
+    position: relative;
+}
+
+.sidebar {
+    width: 60px;
+    background-color: #1f2937;
+    color: white;
+    padding: 1rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transition: width 0.3s ease;
+    z-index: 1000;
+    
+}
+
+.menu-toggle {
+    cursor: pointer;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.menu-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    width: 200px; /* Ancho del menú desplegado */
+    background-color: #333;
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+.menu-items li {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #444;
+    border-bottom: 1px solid #555;
+    text-align: center;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Efecto hover suave */
+}
+
+.menu-items li:hover {
+    background-color: #1f2937;
+}
+
+.contenido {
+    margin-left: 80px; /* Ajusta el margen para dejar espacio al menú */
+    padding: 2rem;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.seccion {
+    margin-bottom: 2rem;
+    
+}
+
+.logout-item form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.close-sesion {
+    background: none;
+    border: none;
+    color: white;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 0;
+}
+
+.close-sesion i {
+    font-size: 20px;
+}
+
+.close-sesion span {
+    display: inline;
+    margin-left: 8px;
+}
+
+.close-sesion :hover{
+    color: #1114b4;
+}
+
+.dark-mode {
+    background: linear-gradient(to bottom right, #000, #333);
+    color: #fff;
+}
+
+
+/* Ocultar texto cuando el menú está colapsado */
+.sidebar.collapsed .logout-item .close-sesion span {
+    display: none;
+}
+
+
+.generador-de-codigo h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.codigo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+#codigo-generado {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.boton-copiar {
+    padding: 8px 15px;
+    background-color: #1114b4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.boton-copiar:hover {
+    background-color: #4b4ba7;
+}
+
+.generador-de-codigo p {
+    margin-bottom: 5px;
+}
+
+#codigo-re {
+    padding: 8px 15px;
+    background-color: #1114b4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: inherit;
+}
+
+#codigo-re:hover {
+    background-color: #1114b4;
+}
+
+#coqr {
+    width: 150px;  /* Ajusta el ancho */
+    height: auto;  /* Mantiene la proporción */   
+}
+
+/* Footer */
+.footer-derechos {
+    text-align: center;
+    padding: -1rem;
+    position: fixed; /* Lo fija a la ventana */
+    bottom: 0; /* Lo pega a la parte inferior */
+    left: 0; /* Lo pega al lado izquierdo */
+    width: 100%; /* Ocupa todo el ancho de la ventana */
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panel de Usuario</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style-user.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='media/favicon.png') }}">
+</head>
+<body>
+
+    <div class="dashboard">
+        <!-- Menú hamburguesa -->
+        <nav class="sidebar" id="sidebar">
+            <button class="menu-toggle" onclick="toggleMenu()"><i class="fa-solid fa-circle-user"></i></button>
+            <ul class="menu-items" id="menuItems">
+                <li onclick="mostrarSeccion('perfil')">Foto de Perfil</li>
+                <li onclick="mostrarSeccion('personal')">Información Personal</li>
+                <li onclick="mostrarSeccion('contrasena')">Cambiar Contraseña</li>
+                <li onclick="mostrarSeccion('certificado')">Certificado</li>
+                <li onclick="mostrarSeccion('metodo')">Métodos de Pago</li>
+                <li onclick="mostrarSeccion('accesibilidad')">Accesibilidad</li>
+                <li onclick="mostrarSeccion('historial')">Historial de Viajes</li>
+            </ul>
+        </nav>
+        <section class="logout-item">
+            <form method="POST" action="{{ url_for('logout') }}">
+                <button type="submit" class="close-sesion">
+                    <i class="fa-solid fa-right-from-bracket"></i> <!-- Icono Font Awesome -->
+                    <span></span>
+                </button>
+              <!-- Botón de descarga -->
+        <button class="close-sesion" id="descargar" type="button">
+            <i class="fa-solid fa-download"></i>
+              <span></span>
+        </button>
+
+              <!-- Botón de volver al menú principal -->
+        <button class="close-sesion" id="volver-menu">
+            <i class="fa-solid fa-house"></i>
+              <span></span>
+        </button>
+
+              <!-- Botón de cambiar tema -->
+        <button class="close-sesion" id="cambiar-tema" type="button">
+            <i class="fa-solid fa-moon"></i>
+              <span></span>
+        </button>
+            </form>
+        </section>
+        <!-- Contenido del panel -->
+        <main class="contenido">
+            <h1>Configuración de Usuario</h1>
+    
+            <section id="perfil" class="seccion">
+              <h2>Foto de Perfil</h2>
+              <img id="previewFoto" src="https://via.placeholder.com/150   " alt="Foto de perfil" />
+              <input type="file" accept="image/*" id="fotoPerfilInput" />
+              <button onclick="subirFotoPerfil()">Subir Foto</button>
+              </section>
+    
+            <section id="personal" class="seccion hidden">
+                <h2>Editar Información Personal</h2>
+                <form id="personalForm">
+                    <input type="text" placeholder="Nombre" name="nombre" required />
+                    <input type="text" placeholder="Dirección" name="direccion" required />
+                    <input type="tel" placeholder="Teléfono" name="telefono" required />
+                    <input type="email" placeholder="Correo electrónico" name="email" required />
+                    <button type="submit">Guardar</button>
+                </form>
+            </section>
+      
+          <section id="contrasena" class="seccion hidden">
+            <h2>Cambiar Contraseña</h2>
+            <input type="password" placeholder="Contraseña actual" id="oldPassword" required />
+            <input type="password" placeholder="Nueva contraseña" id="newPassword" required />
+            <input type="password" placeholder="Confirmar nueva contraseña" id="confirmPassword" required />
+            <button onclick="cambiarContrasena()">Cambiar Contraseña</button>
+          </section>
+      
+          <section id="certificado" class="seccion hidden">
+            <h2>Actualizar Certificado de Discapacidad</h2>
+            <input type="file" id="certificadoInput" />
+            <button onclick="subirCertificado()">Subir Certificado</button>
+          </section>
+      
+          <section id="metodo" class="seccion hidden">
+            <h2>Gestionar Métodos de Pago</h2>
+            <select id="metodoPago">
+              <option>Tarjeta de crédito</option>
+              <option>Nequi</option>
+              <option>Daviplata</option>
+              <option>Efectivo</option>
+            </select>
+            <button onclick="guardarMetodoPago()">Guardar</button>
+          </section>
+      
+          <section id="accesibilidad" class="seccion hidden">
+            <h2>Preferencias de Accesibilidad</h2>
+            <label>Tamaño de fuente:
+              <input type="range" min="12" max="24" value="16" id="fontSizeSlider" />
+            </label>
+            <label>Contraste:
+              <select id="contrasteSelect">
+                <option value="default">Normal</option>
+                <option value="alto">Alto contraste</option>
+              </select>
+            </label>
+          </section>
+      
+          <section id="historial" class="seccion hidden">
+            <h2>Historial de Viajes</h2>
+            <ul id="historialViajes">
+              <li>Viaje a la clínica - 02/05/2025</li>
+              <li>Viaje al centro - 25/04/2025</li>
+              <li>Viaje al parque - 12/06/2025</li>
+            </ul>
+          </section>
+
+          <h1>Bienvenido, Usuario</h1>
+          <p>Aquí está tu código:</p>
+          <div class="codigo-container">
+          <div id="codigo-generado" style="font-size: 1.5em; margin-right: 10px;">Cargando...</div>
+          <button class="boton-copiar" onclick="copiarCodigo()"><i class="fa-solid fa-copy"></i></button>
+          </div>
+          <p>El código se actualizará en:</p>
+          <div id="contador">--:--</div><br>
+
+          <button type="submit" onclick="window.location.href='/index-re';" id="codigo-re">
+          Reservar
+          </button>
+
+          <h1>Escanea este código QR</h1>
+          <img src="static/coqr/codigo_qr.png" alt="Código QR" id="coqr">
+
+        </main>
+      </div>
+
+  <footer class="footer-derechos">
+    <p>&copy; 2025 EvoRide. Todos los derechos reservados.</p>
+</footer>
+
+      
+
+  <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
